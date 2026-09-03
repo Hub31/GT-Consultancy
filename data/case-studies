@@ -1,0 +1,62 @@
+[
+  {
+    "id": "sierra-leone-lab-2019",
+    "title": "Establishing a National Clinical Trial Laboratory",
+    "country": "Sierra Leone",
+    "institution": "In partnership with the London School of Hygiene & Tropical Medicine",
+    "year": "2018–2019",
+    "challenge": "Sierra Leone needed a fully functioning, standards-compliant clinical trial laboratory capable of supporting international research protocols and safe, trackable specimen handling — much of it built from the ground up.",
+    "action": "Led the design and setup of the laboratory's core operations: biorepository architecture, cold-chain planning for temperature-sensitive samples, and the standard operating procedures (SOPs) required to meet international clinical trial standards.",
+    "result": "The laboratory became operational and compliant, giving the country a functioning national capability for clinical trial-grade sample handling that had not previously existed.",
+    "serviceTag": "biorepository-design",
+    "featured": true
+  },
+  {
+    "id": "tanzania-iso15189",
+    "title": "ISO 15189 Accreditation Strengthening Across Multiple Laboratories",
+    "country": "Tanzania",
+    "institution": "National laboratory network",
+    "year": "Multi-year engagement",
+    "challenge": "Several Tanzanian laboratories needed to meet ISO 15189 — the international standard for medical laboratory quality and competence — to achieve formal accreditation and improve the reliability of patient and trial results.",
+    "action": "Provided hands-on quality systems strengthening: documentation, corrective and preventive action (CAPA) processes, and staff training aligned to ISO 15189 and SLMTA (Strengthening Laboratory Management Toward Accreditation) frameworks.",
+    "result": "Multiple laboratories achieved ISO 15189 accreditation, with several earning ASLM Star Ratings — a recognized African laboratory quality benchmark — as a direct result of the strengthened systems.",
+    "serviceTag": "quality-accreditation",
+    "featured": true
+  },
+  {
+    "id": "biobank-2m-samples",
+    "title": "Managing a Biobank of Over 2,000,000 Samples",
+    "country": "Multi-country",
+    "institution": "KEMRI Wellcome Trust Research Programme",
+    "year": "Ongoing",
+    "challenge": "Large-scale clinical and public health research depends on biorepositories that can store, track, and ship huge volumes of biological samples internationally without error — a serious logistical and quality challenge at scale.",
+    "action": "Oversaw biobank operations managing more than 2,000,000 sample aliquots, including international shipment logistics, inventory tracking, and cold-chain integrity.",
+    "result": "Maintained near-zero error rates across international shipments at this scale — the operational discipline research sponsors and regulators require before trusting a facility with irreplaceable samples.",
+    "serviceTag": "biorepository-design",
+    "featured": true
+  },
+  {
+    "id": "lab-data-systems-redesign",
+    "title": "Redesigning Laboratory Data Systems for 100% Data Capture Accuracy",
+    "country": "Kenya",
+    "institution": "",
+    "year": "",
+    "challenge": "Inconsistent or incomplete data capture in laboratory systems undermines everything downstream — from individual patient results to research integrity to regulatory reporting.",
+    "action": "Redesigned the laboratory's data capture systems and day-to-day workflows, closing the specific gaps that had been causing incomplete or inaccurate records.",
+    "result": "Achieved 100% data capture accuracy — a concrete, measurable improvement in the reliability of the laboratory's records.",
+    "serviceTag": "data-systems",
+    "featured": false
+  },
+  {
+    "id": "surveillance-systems-multi",
+    "title": "Strengthening Disease Surveillance Systems",
+    "country": "Kenya, Rwanda, and regional partners",
+    "institution": "London School of Hygiene & Tropical Medicine (LSHTM)",
+    "year": "2018–Present",
+    "challenge": "Effective disease surveillance — for TB, HIV, and outbreak-prone diseases such as Ebola and SARS-CoV-2 — depends on laboratory systems that reliably support case detection, sample referral, and data reporting under real-world pressure.",
+    "action": "Provided technical oversight and system design support for laboratory-based surveillance activities across multiple disease programs, within LSHTM's clinical trials and research operations.",
+    "result": "Contributed to more reliable, standards-aligned surveillance laboratory operations supporting ongoing public health research and outbreak-response efforts.",
+    "serviceTag": "disease-surveillance",
+    "featured": false
+  }
+]
