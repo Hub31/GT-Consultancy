@@ -4,7 +4,7 @@ The live site for GT Consultancy (Godfrey Tuda Otieno) — a static site (plain 
 
 ## How this is hosted
 
-- **Hosting:** Netlify (free tier), connected to this GitHub repository.
+- **Hosting:** Netlify, connected to this GitHub repository.
 - **Deployment:** Automatic. Every time changes are pushed to the `main` branch, Netlify rebuilds and republishes the live site within about a minute. There is no manual "publish" step.
 - **Domain:** `gtconsultancy.pro`, connected to this Netlify site via DNS (see Document 6-equivalent notes below for the exact steps, if not already done).
 - **Forms:** The contact form on `contact.html` uses Netlify's built-in form handling (`data-netlify="true"`) — no separate backend or paid service needed. Submissions email to the domain's wildcard address, which redirects to `gtuda2040@gmail.com`.
