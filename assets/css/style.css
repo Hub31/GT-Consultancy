@@ -101,7 +101,7 @@ textarea:focus-visible {
 .site-header {
   background: var(--navy);
   color: var(--white);
-  padding: var(--space-2) 0;
+  padding: var(--space-3) 0;
   position: sticky;
   top: 0;
   z-index: 50;
@@ -114,22 +114,18 @@ textarea:focus-visible {
 .brand {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
   text-decoration: none;
   color: var(--white);
 }
-.brand img { height: 44px; width: auto; }
-.brand-text .name {
-  font-family: var(--font-head);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--white);
-  display: block;
+.brand img {
+  height: 76px;
+  width: auto;
+  background: var(--white);
+  padding: 6px 10px;
+  border-radius: var(--radius);
 }
-.brand-text .tagline {
-  font-size: 12px;
-  color: var(--teal);
-  display: block;
+@media (max-width: 760px) {
+  .brand img { height: 56px; padding: 4px 8px; }
 }
 
 .nav-links {
@@ -239,7 +235,7 @@ textarea:focus-visible {
 /* ---- Stat strip ---- */
 .stat-strip {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: var(--space-4);
   text-align: left;
 }
@@ -279,10 +275,25 @@ textarea:focus-visible {
   padding: var(--space-2) 0 var(--space-2) var(--space-3);
   margin-bottom: var(--space-3);
   transition: border-color 0.2s ease;
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
 }
 .service-item:hover { border-left-color: var(--navy); }
 .service-item h3 { margin-bottom: var(--space-1); }
 .service-item .service-link { font-size: 14px; }
+.service-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.service-icon svg { width: 24px; height: 24px; }
 
 /* ---- Case studies ---- */
 .case-study {
@@ -303,22 +314,58 @@ textarea:focus-visible {
   margin-bottom: 4px;
 }
 
-/* ---- Countries / locations list ---- */
-.locations-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* ---- Countries / locations: interactive buttons + detail panel ---- */
+.locations-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
 }
-.locations-list li {
+.location-btn {
   font-family: var(--font-head);
-  font-size: 18px;
+  font-size: 17px;
   color: var(--navy);
-  padding: var(--space-1) var(--space-2);
+  background: var(--white);
+  padding: 10px 20px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.location-btn:hover { border-color: var(--teal); }
+.location-btn.active {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+.location-panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--teal);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+.location-panel h3 { margin-bottom: var(--space-1); }
+.location-panel .summary {
+  color: var(--teal);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+.location-panel ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.location-panel li { margin-bottom: 8px; }
+.location-panel .honest-note {
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--ink);
+  opacity: 0.7;
+  font-style: italic;
+  max-width: none;
 }
 
 /* ---- About page ---- */
@@ -390,6 +437,37 @@ form.quote-form textarea { min-height: 140px; resize: vertical; }
   margin: var(--space-3) auto;
   border: 1px solid var(--border);
 }
+
+/* ---- Audience trust cards (Why GT Consultancy) ---- */
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+@media (max-width: 760px) {
+  .trust-grid { grid-template-columns: 1fr; }
+}
+.trust-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--teal);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+.trust-card h3 { font-size: 18px; }
+.trust-card p { font-size: 15px; margin-bottom: 0; }
+
+/* ---- Publications ---- */
+.publication-item {
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+.publication-item:last-child { border-bottom: none; }
+.publication-item .meta {
+  font-size: 13px;
+  color: var(--teal);
+}
+.publication-item .meta a { color: var(--navy); }
 
 /* ---- Footer ---- */
 .site-footer {
