@@ -1,0 +1,74 @@
+[
+  {
+    "id": "ebola-vaccine-lshtm-sierra-leone",
+    "title": "Ebola Vaccine Research Program",
+    "country": "Sierra Leone",
+    "institution": "London School of Hygiene & Tropical Medicine (LSHTM)",
+    "year": "2018–Present",
+    "challenge": "Multi-site Ebola vaccine trials (Phase I–IV) needed laboratory operations capable of handling irreplaceable trial samples reliably, in post-outbreak field conditions where a single cold-chain failure or data error could compromise years of research.",
+    "action": "Served as operational and technical lead across the Parasitology, Safety, Molecular, and Biorepository laboratory sections, managing cold-chain integrity and data quality for a very high sample volume throughout the trial.",
+    "result": "Supported research that has since been published in The Lancet Infectious Diseases and the New England Journal of Medicine — real, peer-reviewed evidence behind the vaccine regimens now informing global Ebola preparedness (see Publications below).",
+    "serviceTag": "biorepository-design",
+    "featured": true
+  },
+  {
+    "id": "kemri-wellcome-rtss-malaria",
+    "title": "RTS,S/AS01 Malaria Vaccine Trial & STAT Laboratory Leadership",
+    "country": "Kenya",
+    "institution": "KEMRI-Wellcome Trust Research Programme, Kilifi",
+    "year": "16-year tenure",
+    "challenge": "Severely ill newborns, neonates, and infants enrolled in landmark clinical trials (including FEAST, KIPMAT, and the Severe Malaria Fluid study) needed rapid, dependable diagnostics — with no margin for delay or error in cases involving neonatal sepsis and acute infectious disease.",
+    "action": "As Section Head of the STAT Laboratory for 16 years, managed diagnostic operations and critical lab infrastructure supporting these trials, while also leading laboratory operations for the Phase III RTS,S/AS01 malaria vaccine trial. Worked directly alongside globally recognized researchers including Prof. Mike English and Prof. Jay Berkley.",
+    "result": "Contributed to landmark clinical trials that directly informed WHO management guidelines for reducing infant and neonatal mortality across Africa — the kind of sustained, high-stakes reliability that only comes from doing this work for over a decade.",
+    "serviceTag": "quality-accreditation",
+    "featured": true
+  },
+  {
+    "id": "biobank-2m-samples",
+    "title": "Managing a Biobank of Over 2,000,000 Samples",
+    "country": "Multi-country",
+    "institution": "KEMRI Wellcome Trust Research Programme",
+    "year": "Ongoing",
+    "challenge": "Large-scale clinical and public health research depends on biorepositories that can store, track, and ship huge volumes of biological samples internationally without error — a serious logistical and quality challenge at scale, where donors and regulators are trusting a facility with irreplaceable specimens.",
+    "action": "Oversaw biobank operations managing more than 2,000,000 sample aliquots, including international shipment logistics, inventory tracking, and cold-chain integrity.",
+    "result": "Maintained the operational discipline this scale demands — the track record research sponsors look for before entrusting a facility with samples that can never be recollected.",
+    "serviceTag": "biorepository-design",
+    "featured": true
+  },
+  {
+    "id": "mobilab-mnch-sierra-leone",
+    "title": "Maternal, Newborn & Child Health Diagnostics Programme",
+    "country": "Sierra Leone",
+    "institution": "Mobilab Medical Innovations, in partnership with the Ministry of Health – Sierra Leone",
+    "year": "",
+    "challenge": "Anemia in pregnant mothers and sickle cell disease in infants often go undetected until it's too late for timely intervention — a gap with direct consequences for maternal and early childhood survival in resource-constrained settings.",
+    "action": "Supported programmatic initiatives implementing diagnostic and screening frameworks for anemia in pregnant mothers and early screening for sickle cell disease in infants and children, working directly with the Ministry of Health to align point-of-care diagnostics with national health policy.",
+    "result": "Helped enable timely clinical intervention for conditions that are otherwise silent until a crisis point — screening infrastructure built for local ownership and long-term sustainability, not a one-time donor-funded intervention.",
+    "serviceTag": "technical-assistance",
+    "featured": false
+  },
+  {
+    "id": "regional-quality-consulting",
+    "title": "Regional Quality Management Consulting Across Sub-Saharan Africa",
+    "country": "Tanzania and regional partners",
+    "institution": "Mobilab / RAMS Global",
+    "year": "Multi-year engagement",
+    "challenge": "Laboratories across the region needed to meet ISO 15189 — the international standard for medical laboratory quality and competence — to earn formal accreditation and improve confidence in patient and trial results.",
+    "action": "Advised clinical and research laboratories on ISO 15189 implementation, training laboratory staff and supporting multiple sites through the accreditation process.",
+    "result": "Supported multiple laboratories toward ASLM (African Society for Laboratory Medicine) accreditation milestones — systems designed to keep working long after the consulting engagement ends.",
+    "serviceTag": "training-capacity",
+    "featured": true
+  },
+  {
+    "id": "lab-data-systems-redesign",
+    "title": "Redesigning Laboratory Data Systems for 100% Data Capture Accuracy",
+    "country": "Kenya",
+    "institution": "",
+    "year": "",
+    "challenge": "Inconsistent or incomplete data capture in laboratory systems undermines everything downstream — from individual patient results to research integrity to regulatory reporting.",
+    "action": "Redesigned the laboratory's data capture systems and day-to-day workflows, closing the specific gaps that had been causing incomplete or inaccurate records.",
+    "result": "Achieved 100% data capture accuracy — a concrete, measurable improvement in the reliability of the laboratory's records.",
+    "serviceTag": "data-systems",
+    "featured": false
+  }
+]

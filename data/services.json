@@ -2,49 +2,49 @@
   {
     "id": "lab-systems-strengthening",
     "title": "Public Health Laboratory Systems Strengthening",
-    "description": "End-to-end support for building or strengthening national and institutional laboratory systems — from operations design to standard operating procedures — so laboratories function reliably under real-world conditions.",
-    "relatedCaseStudyIds": ["sierra-leone-lab-2019"]
+    "description": "When a national laboratory system fails, the cost isn't measured in equipment — it's measured in delayed diagnoses, unreliable data, and lost donor confidence. We build laboratory operations that hold up under real-world pressure, from the ground up.",
+    "relatedCaseStudyIds": ["ebola-vaccine-lshtm-sierra-leone"]
   },
   {
     "id": "biorepository-design",
     "title": "Biorepository & Biobank Design and Management",
-    "description": "Design and operational management of biorepositories and biobanks, including specimen tracking, cold-chain integrity, and safe international shipment — built to the standards research sponsors and regulators require.",
-    "relatedCaseStudyIds": ["sierra-leone-lab-2019", "biobank-2m-samples"]
+    "description": "Every sample in a biorepository represents a patient, a trial participant, or years of research that can never be recollected. We design biobank systems — cold-chain, tracking, international shipment — built so irreplaceable specimens never become a point of failure.",
+    "relatedCaseStudyIds": ["ebola-vaccine-lshtm-sierra-leone", "biobank-2m-samples"]
   },
   {
     "id": "disease-surveillance",
     "title": "Disease Surveillance Systems",
-    "description": "Laboratory-based surveillance system design and technical oversight for TB, HIV, and outbreak-prone diseases including Ebola and SARS-CoV-2, supporting reliable case detection and reporting.",
-    "relatedCaseStudyIds": ["surveillance-systems-multi"]
+    "description": "Outbreaks don't wait for paperwork. We strengthen the laboratory backbone of disease surveillance — for TB, HIV, and outbreak-prone diseases like Ebola — so case detection and reporting hold up when it matters most.",
+    "relatedCaseStudyIds": ["mobilab-mnch-sierra-leone"]
   },
   {
     "id": "quality-accreditation",
     "title": "Laboratory Quality Systems & Accreditation Support",
-    "description": "Hands-on support to help laboratories meet international quality standards — including ISO 15189, GCLP, and SLMTA frameworks — through documentation, CAPA processes, and staff training toward formal accreditation.",
-    "relatedCaseStudyIds": ["tanzania-iso15189"]
+    "description": "An ISO 15189 audit shouldn't feel like a threat. We install quality systems your team actually understands and owns, so accreditation becomes a byproduct of good daily practice — not a stressful annual scramble.",
+    "relatedCaseStudyIds": ["kemri-wellcome-rtss-malaria", "regional-quality-consulting"]
   },
   {
     "id": "biosafety-biosecurity",
     "title": "Biosafety & Biosecurity Risk Assessments",
-    "description": "Practical risk assessments and improvement planning for laboratory biosafety and biosecurity, protecting staff, samples, and the surrounding community.",
+    "description": "Biosafety failures don't make headlines until it's too late. We assess and strengthen the practical safeguards that protect your staff, your samples, and the surrounding community — grounded in frameworks including the WHO Laboratory Biosafety Manual.",
     "relatedCaseStudyIds": []
   },
   {
     "id": "training-capacity",
     "title": "Training & Capacity Building for Laboratory Teams",
-    "description": "Structured training programs that build lasting, in-house laboratory capability — so quality and compliance don't depend on outside help indefinitely.",
-    "relatedCaseStudyIds": ["tanzania-iso15189"]
+    "description": "Consultants eventually leave. The systems and people they trained shouldn't need them to stay. We build training designed to make outside help unnecessary over time — real capacity, not just a certificate on the wall.",
+    "relatedCaseStudyIds": ["regional-quality-consulting"]
   },
   {
     "id": "data-systems",
     "title": "Laboratory Data Systems & Dashboard Design",
-    "description": "Redesign of laboratory data capture and reporting systems to close accuracy gaps and give decision-makers dashboards they can actually trust.",
+    "description": "A lab result is only as good as the data behind it. We close the gaps that quietly erode trust in laboratory data — the kind that don't surface until an audit, a funder review, or a patient outcome depends on it.",
     "relatedCaseStudyIds": ["lab-data-systems-redesign"]
   },
   {
     "id": "technical-assistance",
     "title": "Technical Assistance to Ministries of Health, WHO-Aligned Partners, and Clinical Trial Sponsors",
-    "description": "Direct, hands-on technical assistance for governments, global health partners, and clinical trial sponsors navigating complex laboratory system challenges.",
-    "relatedCaseStudyIds": ["sierra-leone-lab-2019", "surveillance-systems-multi"]
+    "description": "Ministries of health and global health partners don't need another report — they need someone who has actually run the lab, not just advised on it from a distance. That's the difference we bring to technical assistance engagements.",
+    "relatedCaseStudyIds": ["ebola-vaccine-lshtm-sierra-leone", "mobilab-mnch-sierra-leone"]
   }
 ]

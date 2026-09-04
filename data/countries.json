@@ -1,0 +1,47 @@
+[
+  {
+    "id": "kenya",
+    "name": "Kenya",
+    "summary": "16 years leading critical-care laboratory operations at one of Africa's leading research programmes.",
+    "achievements": [
+      "Section Head, STAT Laboratory — KEMRI-Wellcome Trust Research Programme, Kilifi (16-year tenure)",
+      "Laboratory operations lead for the Phase III RTS,S/AS01 malaria vaccine trial",
+      "Supported landmark neonatal and pediatric trials — including FEAST, KIPMAT, and the Severe Malaria Fluid study — that directly informed WHO management guidelines for reducing infant and neonatal mortality",
+      "Managed a biobank of over 2,000,000 sample aliquots across international shipments with near-zero error",
+      "Redesigned laboratory data capture systems, achieving 100% data accuracy",
+      "Co-authored a peer-reviewed study on iron deficiency and acute seizures in Kenyan children (PLoS ONE, 2010)",
+      "KMLTTB Registered laboratory professional (Kenya's national regulatory board)"
+    ]
+  },
+  {
+    "id": "sierra-leone",
+    "name": "Sierra Leone",
+    "summary": "Operational leadership across a national Ebola vaccine research programme, plus maternal and child health diagnostics.",
+    "achievements": [
+      "Operational and technical lead across the Parasitology, Safety, Molecular, and Biorepository sections of LSHTM's multi-site Ebola vaccine research program (Phase I–IV)",
+      "Contributed to research published in The Lancet Infectious Diseases — adult and pediatric Ebola vaccine safety and immunogenicity studies (2022), and a 2023 booster-dose study",
+      "Supported the PREVAC Ebola vaccine trial programme (published in the New England Journal of Medicine), part of a multi-country West African research collaboration",
+      "Partnered with the Ministry of Health, through Mobilab Medical Innovations, on maternal and child health diagnostics — anemia screening in pregnant mothers and sickle cell disease screening in infants and children",
+      "Supported the design and setup of national clinical trial laboratory capacity, including biorepository architecture and cold-chain planning"
+    ]
+  },
+  {
+    "id": "tanzania",
+    "name": "Tanzania",
+    "summary": "Multi-site ISO 15189 accreditation strengthening across a national laboratory network.",
+    "achievements": [
+      "Advised clinical and research laboratories on ISO 15189 implementation through regional quality management consulting (Mobilab / RAMS Global)",
+      "Trained laboratory staff on documentation, corrective and preventive action (CAPA) processes, and quality management fundamentals",
+      "Supported multiple laboratories toward ASLM (African Society for Laboratory Medicine) accreditation milestones"
+    ]
+  },
+  {
+    "id": "rwanda",
+    "name": "Rwanda",
+    "summary": "Regional technical assistance and laboratory systems strengthening.",
+    "achievements": [
+      "Provided technical assistance supporting laboratory systems strengthening as part of regional public health partnership work"
+    ],
+    "note": "Documentation for this engagement is thinner than the others above — flagged honestly rather than filled in with invented specifics. If Godfrey can share more detail on the Rwanda engagement, we'll expand this to match the depth of the other three."
+  }
+]
