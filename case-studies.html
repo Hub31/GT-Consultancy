@@ -7,26 +7,22 @@
 <meta name="description" content="Case studies from Godfrey Tuda Otieno's 23+ years strengthening public health laboratory systems: national laboratory setup, ISO 15189 accreditation, biobank management, and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="/index.html">
-      <img src="/assets/images/logo.jpeg" alt="GT Consultancy logo">
-      <span class="brand-text">
-        <span class="name">GT Consultancy</span>
-        <span class="tagline">Laboratory Systems & Quality Management</span>
-      </span>
+    <a class="brand" href="index.html">
+      <img src="assets/images/logo-cropped.png" alt="GT Consultancy — Laboratory Systems & Quality Management">
     </a>
     <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu">Menu</button>
     <ul class="nav-links">
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/services.html">Services</a></li>
-      <li><a href="/case-studies.html" aria-current="page">Track Record</a></li>
-      <li><a href="/contact.html">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="case-studies.html" aria-current="page">Track Record</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
 </header>
@@ -36,15 +32,20 @@
     <div class="section-heading"><h1>Track Record</h1></div>
 
     <h2 style="margin-bottom: var(--space-2);">Where We've Worked</h2>
-    <ul class="locations-list" style="margin-bottom: var(--space-5);">
-      <li>Kenya</li>
-      <li>Sierra Leone</li>
-      <li>Tanzania</li>
-      <li>Rwanda</li>
-      <li>Available Worldwide</li>
-    </ul>
+    <p style="max-width: 68ch;">Click a country to see the specific work delivered there.</p>
+    <div class="locations-buttons" id="locations-buttons"></div>
+    <div class="location-panel" id="location-panel" style="margin-bottom: var(--space-3);"></div>
+    <p style="margin-bottom: var(--space-5); font-size: 14px; opacity: 0.75;">Beyond these four countries, GT Consultancy is available for remote and on-site engagements worldwide.</p>
 
     <div id="case-studies-full"></div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-heading"><h2>Publications</h2></div>
+    <p style="max-width: 68ch;">Peer-reviewed research Godfrey has contributed to — the kind of verifiable, checkable evidence that matters more than any claim we could make ourselves.</p>
+    <div id="publications-full"></div>
   </div>
 </section>
 
@@ -52,7 +53,7 @@
   <div class="container" style="text-align:center;">
     <h2>Want a similar result for your organization?</h2>
     <div class="cta-row" style="justify-content:center;">
-      <a class="btn btn-primary" href="/contact.html">Request a Consultation</a>
+      <a class="btn btn-primary" href="contact.html">Request a Consultation</a>
     </div>
   </div>
 </section>
@@ -60,11 +61,11 @@
 <footer class="site-footer">
   <div class="container">
     <ul class="footer-links">
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/services.html">Services</a></li>
-      <li><a href="/case-studies.html">Track Record</a></li>
-      <li><a href="/contact.html">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="case-studies.html">Track Record</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <p>hello@gtconsultancy.pro</p>
     <p class="footer-note">© 2026 GT Consultancy. All rights reserved.</p>
@@ -72,9 +73,11 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-<script src="/assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
 <script>
+  renderCountries("#locations-buttons", "#location-panel");
   renderCaseStudies("#case-studies-full", {});
+  renderPublications("#publications-full");
 </script>
 </body>
 </html>
