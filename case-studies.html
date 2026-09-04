@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Track Record — GT Consultancy</title>
-<meta name="description" content="Case studies from Godfrey Tuda Otieno's 23+ years strengthening public health laboratory systems: national laboratory setup, ISO 15189 accreditation, biobank management, and more.">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta name="description" content="Case studies from Godfrey Tuda Otieno's 25+ years strengthening public health laboratory systems: national laboratory setup, ISO 15189 accreditation, biobank management, and more.">
+<link rel="icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600;6..72,700&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
 <header class="site-header">
   <div class="container">
     <a class="brand" href="index.html">
-      <img src="assets/images/logo-cropped.png" alt="GT Consultancy — Laboratory Systems & Quality Management">
+      <img src="assets/images/logo-cropped.png" alt="GT Consultancy — Laboratory Systems & Quality Management" width="220" height="76">
     </a>
     <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu">Menu</button>
     <ul class="nav-links">
@@ -32,13 +32,17 @@
   <div class="container">
     <div class="section-heading"><h1>Track Record</h1></div>
 
-    <h2 style="margin-bottom: var(--space-2);">Where We've Worked</h2>
-    <p style="max-width: 68ch;">Click a country to see the specific work delivered there.</p>
-    <div class="locations-buttons" id="locations-buttons"></div>
-    <div class="location-panel" id="location-panel" style="margin-bottom: var(--space-3);"></div>
-    <p style="margin-bottom: var(--space-5); font-size: 14px; opacity: 0.75;">Beyond these four countries, GT Consultancy is available for remote and on-site engagements worldwide.</p>
-
-    <div id="case-studies-full"></div>
+    <div class="about-grid" style="grid-template-columns: 1fr 320px; margin-bottom: var(--space-5);">
+      <div>
+        <h2 style="margin-bottom: var(--space-2);">Where We've Worked</h2>
+        <p style="max-width: 68ch;">Click a country to expand the specific work delivered there.</p>
+        <div id="country-accordion"></div>
+        <p style="font-size: 14px; opacity: 0.75;">Beyond these four countries, GT Consultancy is available for remote and on-site engagements worldwide.</p>
+      </div>
+      <div>
+        <img class="supporting-photo" src="assets/images/godfrey-portrait-labcoat.jpg" alt="Godfrey Tuda Otieno in a laboratory coat" loading="lazy" width="320" height="400">
+      </div>
+    </div>
   </div>
 </section>
 
@@ -73,12 +77,13 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-<script src="assets/js/main.js"></script>
-<script>
-  renderCountries("#locations-buttons", "#location-panel");
-  renderCaseStudies("#case-studies-full", {});
-  renderPublications("#publications-full");
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+<script defer>
+  window.addEventListener("DOMContentLoaded", function () {
+    renderCountryAccordion("#country-accordion");
+    renderPublications("#publications-full");
+  });
 </script>
 </body>
 </html>
