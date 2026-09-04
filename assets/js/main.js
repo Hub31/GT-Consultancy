@@ -213,65 +213,105 @@ function renderPublications(targetSelector) {
     });
 }
 
-// ---- Render interactive Country panels (click a nation to see specifics) ----
-function renderCountries(buttonsSelector, panelSelector) {
-  var buttonsWrap = document.querySelector(buttonsSelector);
-  var panel = document.querySelector(panelSelector);
-  if (!buttonsWrap || !panel) return;
+// ---- Render interactive Country accordion (click a nation to expand its details) ----
+function renderCountryAccordion(containerSelector) {
+  var container = document.querySelector(containerSelector);
+  if (!container) return;
 
-  fetch("data/countries.json")
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (countries) {
-      // Render the nation buttons
-      buttonsWrap.innerHTML = countries
-        .map(function (c, i) {
-          return (
-            '<button type="button" class="location-btn' + (i === 0 ? " active" : "") + '" data-id="' + escapeAttr(c.id) + '">' +
-            escapeHtml(c.name) +
-            "</button>"
-          );
-        })
-        .join("");
+  Promise.all([
+    fetch("data/countries.json").then(function (r) { return r.json(); }),
+    fetch("data/case-studies.json").then(function (r) { return r.json(); })
+  ]).then(function (results) {
+    var countries = results[0];
+    var caseStudies = results[1];
 
-      function showCountry(id) {
-        var c = countries.find(function (c) {
-          return c.id === id;
-        });
-        if (!c) return;
+    container.innerHTML = countries
+      .map(function (c, i) {
+        return (
+          '<div class="accordion-item' + (i === 0 ? " open" : "") + '" data-id="' + escapeAttr(c.id) + '">' +
+          '<button type="button" class="accordion-header" aria-expanded="' + (i === 0 ? "true" : "false") + '">' +
+          "<span class=\"accordion-title\">" + escapeHtml(c.name) + "</span>" +
+          "<span class=\"accordion-summary\">" + escapeHtml(c.summary) + "</span>" +
+          '<span class="accordion-chevron" aria-hidden="true">&#9662;</span>' +
+          "</button>" +
+          '<div class="accordion-panel"><div class="accordion-panel-inner"></div></div>' +
+          "</div>"
+        );
+      })
+      .join("");
 
-        var buttons = buttonsWrap.querySelectorAll(".location-btn");
-        buttons.forEach(function (b) {
-          b.classList.toggle("active", b.getAttribute("data-id") === id);
-        });
+    function fillPanel(item, country) {
+      var inner = item.querySelector(".accordion-panel-inner");
+      if (inner.dataset.filled) return; // build content once, lazily, on first open
 
-        panel.innerHTML =
-          "<h3>" + escapeHtml(c.name) + "</h3>" +
-          "<p class=\"summary\">" + escapeHtml(c.summary) + "</p>" +
-          "<ul>" +
-          c.achievements.map(function (a) { return "<li>" + escapeHtml(a) + "</li>"; }).join("") +
-          "</ul>" +
-          (c.note ? '<p class="honest-note">' + escapeHtml(c.note) + "</p>" : "");
-
-        if (typeof anime !== "undefined" && !prefersReducedMotion) {
-          anime.set(panel, { opacity: 0, translateY: 8 });
-          anime({ targets: panel, opacity: [0, 1], translateY: [8, 0], duration: 350, easing: "easeOutQuad" });
-        }
-      }
-
-      buttonsWrap.addEventListener("click", function (e) {
-        var btn = e.target.closest(".location-btn");
-        if (!btn) return;
-        showCountry(btn.getAttribute("data-id"));
+      var matches = caseStudies.filter(function (cs) {
+        return cs.countries && cs.countries.indexOf(country.name) !== -1;
       });
 
-      // Show the first country by default
-      if (countries.length) showCountry(countries[0].id);
-    })
-    .catch(function (err) {
-      console.error("Could not load countries:", err);
+      var html = "";
+      if (matches.length) {
+        html = matches
+          .map(function (cs) {
+            return (
+              '<article class="case-study">' +
+              '<div class="meta">' + escapeHtml(cs.institution || "") +
+              (cs.year ? " · " + escapeHtml(cs.year) : "") + "</div>" +
+              "<h4>" + escapeHtml(cs.title) + "</h4>" +
+              '<div class="cs-block"><span class="label">The Challenge</span>' + escapeHtml(cs.challenge) + "</div>" +
+              '<div class="cs-block"><span class="label">The Action</span>' + escapeHtml(cs.action) + "</div>" +
+              '<div class="cs-block"><span class="label">The Result</span>' + escapeHtml(cs.result) + "</div>" +
+              "</article>"
+            );
+          })
+          .join("");
+      }
+      if (country.note) {
+        html += '<p class="honest-note">' + escapeHtml(country.note) + "</p>";
+      }
+      inner.innerHTML = html || "<p>Details coming soon.</p>";
+      inner.dataset.filled = "1";
+    }
+
+    var items = container.querySelectorAll(".accordion-item");
+
+    items.forEach(function (item) {
+      var id = item.getAttribute("data-id");
+      var country = countries.find(function (c) { return c.id === id; });
+      var header = item.querySelector(".accordion-header");
+      var panel = item.querySelector(".accordion-panel");
+
+      if (item.classList.contains("open")) {
+        fillPanel(item, country);
+        panel.style.maxHeight = "none";
+      }
+
+      header.addEventListener("click", function () {
+        var isOpen = item.classList.contains("open");
+
+        // Close all others (single-open accordion)
+        items.forEach(function (other) {
+          if (other !== item) {
+            other.classList.remove("open");
+            other.querySelector(".accordion-header").setAttribute("aria-expanded", "false");
+            other.querySelector(".accordion-panel").style.maxHeight = "0px";
+          }
+        });
+
+        if (isOpen) {
+          item.classList.remove("open");
+          header.setAttribute("aria-expanded", "false");
+          panel.style.maxHeight = "0px";
+        } else {
+          fillPanel(item, country);
+          item.classList.add("open");
+          header.setAttribute("aria-expanded", "true");
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
     });
+  }).catch(function (err) {
+    console.error("Could not load country accordion:", err);
+  });
 }
 
 // ---- Small helpers ----
