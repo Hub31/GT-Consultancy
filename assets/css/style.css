@@ -228,16 +228,32 @@ textarea:focus-visible {
 
 /* ---- Hero ---- */
 .hero {
-  background: var(--navy);
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(0,156,161,0.18), transparent 60%),
+    linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 100%);
+  background-color: var(--navy);
   color: var(--white);
   padding: var(--space-6) 0;
   overflow: hidden;
+  position: relative;
+}
+.hero::before {
+  /* Subtle original dot-grid texture — breaks up the flat blue without a photo */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.5), transparent 75%);
+  pointer-events: none;
 }
 .hero .container {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: var(--space-5);
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 @media (max-width: 860px) {
   .hero .container { grid-template-columns: 1fr; }
@@ -250,6 +266,18 @@ textarea:focus-visible {
 }
 .hero-photo {
   position: relative;
+  isolation: isolate;
+}
+.hero-photo::before {
+  /* Warm glow accent behind the photo — deliberately breaks the all-navy palette */
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 115%; height: 115%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(201,138,44,0.35) 0%, transparent 68%);
+  filter: blur(6px);
+  z-index: -1;
 }
 .hero-photo img {
   width: 100%;
@@ -258,17 +286,7 @@ textarea:focus-visible {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255,255,255,0.15);
   box-shadow: var(--shadow-lift);
-  position: relative;
-  z-index: 1;
-}
-.hero-photo::before {
-  content: '';
-  position: absolute;
-  top: 18px; left: 18px;
-  width: 100%; height: 100%;
-  border: 2px solid var(--teal);
-  border-radius: var(--radius-lg);
-  z-index: 0;
+  display: block;
 }
 
 /* ---- Paired photo block (right after hero, Hecta-style) ---- */
@@ -452,6 +470,218 @@ textarea:focus-visible {
   opacity: 0.7;
   font-style: italic;
   margin-top: var(--space-2);
+}
+
+/* ---- Africa impact map ---- */
+.map-section {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: var(--space-5);
+  align-items: center;
+}
+@media (max-width: 860px) {
+  .map-section { grid-template-columns: 1fr; }
+}
+.africa-map { width: 100%; max-width: 380px; margin: 0 auto; display: block; }
+.map-marker { cursor: default; transition: transform 0.2s ease; transform-origin: center; }
+.map-marker:hover { transform: scale(1.25); }
+.marker-dot { fill: var(--teal); stroke: var(--white); stroke-width: 2; }
+.map-marker-hq .marker-dot { fill: var(--navy); }
+.marker-pulse {
+  fill: var(--teal);
+  opacity: 0.35;
+  animation: mapPulse 2.4s ease-out infinite;
+}
+.map-marker-hq .marker-pulse { fill: var(--navy); }
+@keyframes mapPulse {
+  0% { r: 6; opacity: 0.4; }
+  100% { r: 16; opacity: 0; }
+}
+.map-legend { list-style: none; margin: 0; padding: 0; }
+.map-legend li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+.map-legend li:last-child { border-bottom: none; }
+.map-legend .dot {
+  width: 10px; height: 10px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: 0;
+  opacity: 1;
+}
+.map-legend .dot.hq { background: var(--navy); }
+.map-legend strong { font-family: var(--font-head); color: var(--navy); font-size: 17px; }
+.map-legend li > div > span { font-size: 14px; opacity: 0.75; }
+
+/* ---- Offices ---- */
+.office-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+@media (max-width: 700px) {
+  .office-grid { grid-template-columns: 1fr; }
+}
+.office-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--navy);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-sm);
+}
+.office-region {
+  font-size: 12px;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+.office-card p { font-size: 14px; opacity: 0.85; margin-bottom: 0; }
+
+/* ---- Strategic Partners ---- */
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  max-width: 700px;
+}
+@media (max-width: 600px) {
+  .partner-grid { grid-template-columns: 1fr; }
+}
+.partner-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: var(--shadow-sm);
+}
+.partner-name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--navy);
+}
+.partner-role {
+  font-size: 13px;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+/* ---- Vision & Mission ---- */
+.vision-mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+@media (max-width: 760px) {
+  .vision-mission-grid { grid-template-columns: 1fr; }
+}
+.vm-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--teal);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-sm);
+}
+.vm-card .role {
+  color: var(--teal);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  display: block;
+  margin-bottom: var(--space-2);
+}
+.vm-card p { font-size: 15px; margin-bottom: 0; }
+
+/* ---- Advisory Board ---- */
+.leader-card {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+  box-shadow: var(--shadow-md);
+}
+.leader-card img {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--teal);
+  flex-shrink: 0;
+}
+.leader-card h3 { color: var(--white); margin-bottom: 2px; }
+.leader-card .role {
+  color: var(--teal);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  display: block;
+  margin-bottom: var(--space-1);
+}
+.leader-card p { color: #D7E2EC; margin-bottom: 0; font-size: 15px; }
+
+.advisor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+@media (max-width: 760px) {
+  .advisor-grid { grid-template-columns: 1fr; }
+}
+.advisor-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.advisor-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.advisor-card img {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg-alt);
+  margin: 0 auto var(--space-2);
+}
+.advisor-card h4 { margin-bottom: 2px; }
+.advisor-card .role {
+  color: var(--teal);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  display: block;
+  margin-bottom: var(--space-1);
+}
+.advisor-card p { font-size: 13px; opacity: 0.8; margin-bottom: 0; }
+.advisor-network-note {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.7;
+  margin-top: var(--space-3);
+  font-style: italic;
 }
 
 /* ---- Bio panel (sidebar card — used on Track Record) ---- */
