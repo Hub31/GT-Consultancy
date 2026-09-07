@@ -38,6 +38,22 @@ var prefersReducedMotion =
   });
 })();
 
+// ---- Hero background slideshow: JS-driven class toggle (not CSS
+// animation-delay chains) — the simplest, most cross-browser-reliable way
+// to cross-fade a stack of background images. ----
+(function () {
+  var slides = document.querySelectorAll(".bg-slide");
+  if (!slides.length) return;
+  slides[0].classList.add("active");
+  if (prefersReducedMotion || slides.length < 2) return;
+  var current = 0;
+  setInterval(function () {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+  }, 6000);
+})();
+
 // ---- Stat count-up: meaningful motion, triggered once on scroll into view ----
 (function () {
   var statEls = document.querySelectorAll(".js-count");
@@ -107,6 +123,72 @@ var prefersReducedMotion =
         header.setAttribute("aria-expanded", "true");
         panel.style.maxHeight = panel.scrollHeight + "px";
       }
+    });
+  });
+})();
+
+// ---- Interactive Africa map: hover/focus/tap tooltips on data countries ----
+(function () {
+  var wraps = document.querySelectorAll(".map-wrap");
+  if (!wraps.length) return;
+
+  wraps.forEach(function (wrap) {
+    var tooltip = wrap.querySelector(".map-tooltip");
+    var paths = wrap.querySelectorAll("path[data-detail]");
+    if (!tooltip || !paths.length) return;
+
+    var activePath = null;
+
+    function showTooltip(path) {
+      var name = path.getAttribute("data-country") || "";
+      var detail = path.getAttribute("data-detail") || "";
+      tooltip.innerHTML = "<strong>" + name + "</strong>" + detail;
+      tooltip.classList.add("visible");
+
+      var wrapRect = wrap.getBoundingClientRect();
+      var pathRect = path.getBoundingClientRect();
+      var centerX = pathRect.left + pathRect.width / 2 - wrapRect.left;
+      var pathTop = pathRect.top - wrapRect.top;
+      var pathBottom = pathRect.bottom - wrapRect.top;
+      var gap = 10;
+
+      var tw = tooltip.offsetWidth;
+      var th = tooltip.offsetHeight;
+
+      // Clamp horizontally so the tooltip never overflows the map wrap
+      var half = tw / 2;
+      var clampedX = Math.max(half, Math.min(wrapRect.width - half, centerX));
+
+      // Prefer placing above the country; flip below if there's no room
+      var placeAbove = pathTop - th - gap >= 0;
+      var topY = placeAbove ? pathTop - th - gap : pathBottom + gap;
+
+      tooltip.style.left = clampedX + "px";
+      tooltip.style.top = Math.max(0, topY) + "px";
+      tooltip.classList.toggle("arrow-down", placeAbove);
+      tooltip.classList.toggle("arrow-up", !placeAbove);
+      activePath = path;
+    }
+
+    function hideTooltip() {
+      tooltip.classList.remove("visible");
+      activePath = null;
+    }
+
+    paths.forEach(function (path) {
+      path.addEventListener("mouseenter", function () { showTooltip(path); });
+      path.addEventListener("mouseleave", hideTooltip);
+      path.addEventListener("focus", function () { showTooltip(path); });
+      path.addEventListener("blur", hideTooltip);
+      path.addEventListener("click", function (e) {
+        e.stopPropagation();
+        showTooltip(path);
+      });
+    });
+
+    // Tapping elsewhere on the page dismisses an open tooltip (touch devices)
+    document.addEventListener("click", function () {
+      if (activePath) hideTooltip();
     });
   });
 })();
