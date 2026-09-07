@@ -248,18 +248,10 @@ textarea:focus-visible {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  animation: heroBgSlide 18s infinite;
+  transition: opacity 1.4s ease;
+  will-change: opacity;
 }
-.bg-slide-1 { animation-delay: 0s; }
-.bg-slide-2 { animation-delay: 6s; }
-.bg-slide-3 { animation-delay: 12s; }
-@keyframes heroBgSlide {
-  0%   { opacity: 0; }
-  3%   { opacity: 1; }
-  30%  { opacity: 1; }
-  36%  { opacity: 0; }
-  100% { opacity: 0; }
-}
+.bg-slide.active { opacity: 1; }
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -282,10 +274,6 @@ textarea:focus-visible {
   margin-top: var(--space-2);
   font-size: 13px;
   color: rgba(255,255,255,0.65);
-}
-@media (prefers-reduced-motion: reduce) {
-  .bg-slide { animation: none; opacity: 0; }
-  .bg-slide-1 { opacity: 1; }
 }
 
 /* ---- Institution trust strip ---- */
@@ -500,23 +488,64 @@ textarea:focus-visible {
   display: block;
   filter: drop-shadow(0 8px 20px rgba(10,42,84,0.1));
 }
+.map-wrap {
+  position: relative;
+  max-width: 420px;
+  margin: 0 auto;
+}
 .africa-map path {
   fill: var(--bg-alt);
   stroke: var(--white);
   stroke-width: 0.6;
   transition: fill 0.2s ease, opacity 0.2s ease;
 }
-.africa-map path.country-office {
-  fill: var(--navy);
-  cursor: default;
-}
+.africa-map path.country-office,
 .africa-map path.country-active {
-  fill: var(--teal);
-  cursor: default;
+  cursor: pointer;
 }
+.africa-map path.country-office { fill: var(--navy); }
+.africa-map path.country-active { fill: var(--teal); }
 .africa-map path.country-office:hover,
-.africa-map path.country-active:hover {
+.africa-map path.country-office:focus-visible,
+.africa-map path.country-active:hover,
+.africa-map path.country-active:focus-visible {
   opacity: 0.82;
+  outline: none;
+}
+.map-tooltip {
+  position: absolute;
+  transform: translateX(-50%);
+  background: var(--navy);
+  color: var(--white);
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 240px;
+  width: max-content;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+.map-tooltip.visible { opacity: 1; visibility: visible; }
+.map-tooltip strong { display: block; margin-bottom: 2px; color: var(--white); }
+.map-tooltip::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+}
+.map-tooltip.arrow-down::after { top: 100%; border-top-color: var(--navy); }
+.map-tooltip.arrow-up::after { bottom: 100%; border-bottom-color: var(--navy); }
+@media (max-width: 480px) {
+  .map-tooltip {
+    max-width: 200px;
+    font-size: 12px;
+  }
 }
 .map-legend { list-style: none; margin: 0; padding: 0; }
 .map-legend li {
