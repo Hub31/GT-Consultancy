@@ -229,8 +229,9 @@ textarea:focus-visible {
 /* ---- Hero ---- */
 .hero {
   background:
-    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(0,156,161,0.18), transparent 60%),
-    linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 100%);
+    radial-gradient(ellipse 900px 600px at 12% -15%, rgba(0,156,161,0.22), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 110%, rgba(201,138,44,0.14), transparent 55%),
+    linear-gradient(155deg, var(--navy) 0%, var(--navy-dark) 100%);
   background-color: var(--navy);
   color: var(--white);
   padding: var(--space-6) 0;
@@ -264,12 +265,19 @@ textarea:focus-visible {
   font-size: 20px;
   max-width: 55ch;
 }
-.hero-photo {
+
+/* Rotating carousel of real lab photography — replaces the single portrait */
+.hero-carousel {
   position: relative;
   isolation: isolate;
+  aspect-ratio: 4/5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lift);
+  border: 1px solid rgba(255,255,255,0.15);
 }
-.hero-photo::before {
-  /* Warm glow accent behind the photo — deliberately breaks the all-navy palette */
+.hero-carousel::before {
+  /* Warm glow accent behind the carousel — deliberately breaks the all-navy palette */
   content: '';
   position: absolute;
   top: 50%; left: 50%;
@@ -279,14 +287,29 @@ textarea:focus-visible {
   filter: blur(6px);
   z-index: -1;
 }
-.hero-photo img {
+.carousel-slide {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  aspect-ratio: 4/5;
+  height: 100%;
   object-fit: cover;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255,255,255,0.15);
-  box-shadow: var(--shadow-lift);
-  display: block;
+  opacity: 0;
+  animation: heroCarousel 16s infinite;
+}
+.slide-1 { animation-delay: 0s; }
+.slide-2 { animation-delay: 4s; }
+.slide-3 { animation-delay: 8s; }
+.slide-4 { animation-delay: 12s; }
+@keyframes heroCarousel {
+  0%   { opacity: 0; }
+  3%   { opacity: 1; }
+  22%  { opacity: 1; }
+  28%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel-slide { animation: none; opacity: 0; }
+  .carousel-slide.slide-1 { opacity: 1; }
 }
 
 /* ---- Paired photo block (right after hero, Hecta-style) ---- */
@@ -472,7 +495,18 @@ textarea:focus-visible {
   margin-top: var(--space-2);
 }
 
-/* ---- Africa impact map ---- */
+.flag-icon {
+  width: 22px;
+  height: 16px;
+  object-fit: cover;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  vertical-align: middle;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
+/* ---- Africa impact map (real, accurate continent shape) ---- */
 .map-section {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
@@ -482,20 +516,30 @@ textarea:focus-visible {
 @media (max-width: 860px) {
   .map-section { grid-template-columns: 1fr; }
 }
-.africa-map { width: 100%; max-width: 380px; margin: 0 auto; display: block; }
-.map-marker { cursor: default; transition: transform 0.2s ease; transform-origin: center; }
-.map-marker:hover { transform: scale(1.25); }
-.marker-dot { fill: var(--teal); stroke: var(--white); stroke-width: 2; }
-.map-marker-hq .marker-dot { fill: var(--navy); }
-.marker-pulse {
-  fill: var(--teal);
-  opacity: 0.35;
-  animation: mapPulse 2.4s ease-out infinite;
+.africa-map {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 8px 20px rgba(10,42,84,0.1));
 }
-.map-marker-hq .marker-pulse { fill: var(--navy); }
-@keyframes mapPulse {
-  0% { r: 6; opacity: 0.4; }
-  100% { r: 16; opacity: 0; }
+.africa-map path {
+  fill: var(--bg-alt);
+  stroke: var(--white);
+  stroke-width: 0.6;
+  transition: fill 0.2s ease, opacity 0.2s ease;
+}
+.africa-map path.country-office {
+  fill: var(--navy);
+  cursor: default;
+}
+.africa-map path.country-active {
+  fill: var(--teal);
+  cursor: default;
+}
+.africa-map path.country-office:hover,
+.africa-map path.country-active:hover {
+  opacity: 0.82;
 }
 .map-legend { list-style: none; margin: 0; padding: 0; }
 .map-legend li {
@@ -664,7 +708,10 @@ textarea:focus-visible {
   object-fit: cover;
   border: 3px solid var(--bg-alt);
   margin: 0 auto var(--space-2);
+  filter: grayscale(75%) contrast(1.08);
+  transition: filter 0.3s ease;
 }
+.advisor-card:hover img { filter: grayscale(0%) contrast(1); }
 .advisor-card h4 { margin-bottom: 2px; }
 .advisor-card .role {
   color: var(--teal);
