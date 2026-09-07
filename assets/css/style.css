@@ -226,117 +226,66 @@ textarea:focus-visible {
   margin-top: var(--space-3);
 }
 
-/* ---- Hero ---- */
-.hero {
-  background:
-    radial-gradient(ellipse 900px 600px at 12% -15%, rgba(0,156,161,0.22), transparent 60%),
-    radial-gradient(ellipse 700px 500px at 100% 110%, rgba(201,138,44,0.14), transparent 55%),
-    linear-gradient(155deg, var(--navy) 0%, var(--navy-dark) 100%);
-  background-color: var(--navy);
+/* ---- Hero (full-bleed background slideshow) ---- */
+.hero-slideshow {
+  position: relative;
+  overflow: hidden;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
   color: var(--white);
   padding: var(--space-6) 0;
-  overflow: hidden;
-  position: relative;
 }
-.hero::before {
-  /* Subtle original dot-grid texture — breaks up the flat blue without a photo */
-  content: '';
+.hero-bg-slides {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(255,255,255,0.08) 1.5px, transparent 1.5px);
-  background-size: 28px 28px;
-  mask-image: linear-gradient(180deg, rgba(0,0,0,0.5), transparent 75%);
-  pointer-events: none;
+  z-index: 0;
 }
-.hero .container {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: var(--space-5);
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-@media (max-width: 860px) {
-  .hero .container { grid-template-columns: 1fr; }
-}
-.hero h1 { color: var(--white); max-width: 20ch; }
-.hero p.lede {
-  color: #D7E2EC;
-  font-size: 20px;
-  max-width: 55ch;
-}
-
-/* Rotating carousel of real lab photography — replaces the single portrait */
-.hero-carousel {
-  position: relative;
-  isolation: isolate;
-  aspect-ratio: 4/5;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lift);
-  border: 1px solid rgba(255,255,255,0.15);
-}
-.hero-carousel::before {
-  /* Warm glow accent behind the carousel — deliberately breaks the all-navy palette */
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 115%; height: 115%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(201,138,44,0.35) 0%, transparent 68%);
-  filter: blur(6px);
-  z-index: -1;
-}
-.carousel-slide {
+.bg-slide {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  animation: heroCarousel 16s infinite;
+  animation: heroBgSlide 18s infinite;
 }
-.slide-1 { animation-delay: 0s; }
-.slide-2 { animation-delay: 4s; }
-.slide-3 { animation-delay: 8s; }
-.slide-4 { animation-delay: 12s; }
-@keyframes heroCarousel {
+.bg-slide-1 { animation-delay: 0s; }
+.bg-slide-2 { animation-delay: 6s; }
+.bg-slide-3 { animation-delay: 12s; }
+@keyframes heroBgSlide {
   0%   { opacity: 0; }
   3%   { opacity: 1; }
-  22%  { opacity: 1; }
-  28%  { opacity: 0; }
+  30%  { opacity: 1; }
+  36%  { opacity: 0; }
   100% { opacity: 0; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .carousel-slide { animation: none; opacity: 0; }
-  .carousel-slide.slide-1 { opacity: 1; }
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(100deg, rgba(7,28,58,0.94) 0%, rgba(7,28,58,0.82) 38%, rgba(10,42,84,0.55) 62%, rgba(10,42,84,0.3) 100%),
+    radial-gradient(ellipse 700px 500px at 100% 100%, rgba(201,138,44,0.12), transparent 55%);
 }
-
-/* ---- Paired photo block (right after hero, Hecta-style) ---- */
-.paired-photos {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-3);
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
-@media (max-width: 700px) {
-  .paired-photos { grid-template-columns: 1fr; }
+.hero h1 { color: var(--white); max-width: 18ch; }
+.hero p.lede {
+  color: #D7E2EC;
+  font-size: 20px;
+  max-width: 52ch;
 }
-.paired-photos img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
-}
-.paired-photos img:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-.paired-photos figure { margin: 0; }
-.paired-photos figcaption {
+.hero-microcopy {
+  margin-top: var(--space-2);
   font-size: 13px;
-  color: var(--ink);
-  opacity: 0.7;
-  margin-top: 6px;
+  color: rgba(255,255,255,0.65);
+}
+@media (prefers-reduced-motion: reduce) {
+  .bg-slide { animation: none; opacity: 0; }
+  .bg-slide-1 { opacity: 1; }
 }
 
 /* ---- Institution trust strip ---- */
