@@ -692,11 +692,11 @@ textarea:focus-visible {
 
 .advisor-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: var(--space-3);
 }
-@media (max-width: 760px) {
-  .advisor-grid { grid-template-columns: 1fr; }
+.advisor-grid.team-teaser-grid {
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
 }
 .advisor-card {
   background: var(--white);
